@@ -42,7 +42,7 @@ check: check/format check/lint check/types check/spell ## Run all checks.
 .PHONY: check/format
 check/format:
 	@uv run ruff format --check
-	@uv run mdformat --check .github griptape_cloud_python_client *.md
+	@uv run mdformat --check .github griptape_cloud_client *.md
 
 .PHONY: check/lint
 check/lint:

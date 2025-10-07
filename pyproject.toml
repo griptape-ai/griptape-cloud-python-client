@@ -1,5 +1,5 @@
 [project]
-name = "griptape_cloud_python_client"
+name = "griptape_cloud_client"
 version = "0.1.0"
 description = "Python client for Griptape Cloud API"
 readme = "README.md"
@@ -22,7 +22,7 @@ exclude = [".venv", "LICENSE", "griptape_cloud/griptape_cloud_client/**/*"]
 
 [tool.ruff.lint]
 select = ["ALL"]
-exclude = ["griptape_cloud_python_client/**/*"]
+exclude = ["griptape_cloud_client/**/*"]
 ignore = [
   "TD002",   # Intentional
   "FIX002",  # Intentional
@@ -59,8 +59,8 @@ venvPath = "."
 venv = ".venv"
 include = ["."]
 exclude = [
-  "griptape_cloud_python_client/**/*",
-  "griptape_cloud_python_client/generated/**/*",
+  "griptape_cloud_client/**/*",
+  "griptape_cloud_client/generated/**/*",
   ".venv",
   "**/node_modules",
   "**/__pycache__",

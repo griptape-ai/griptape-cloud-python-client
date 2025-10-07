@@ -110,8 +110,8 @@ def _download_openapi_spec(url: str, output_path: Path) -> None:
 
 def main() -> None:
     """Main entry point for downloading, cleaning, and generating the SDK from the OpenAPI spec."""
-    griptape_cloud_python_client_dir = Path(__file__).parent.parent / "griptape_cloud_python_client"
-    output_dir = griptape_cloud_python_client_dir / "generated"
+    griptape_cloud_client_dir = Path(__file__).parent.parent / "griptape_cloud_client"
+    output_dir = griptape_cloud_client_dir / "generated"
     output_dir.mkdir(parents=True, exist_ok=True)
 
     openapi_spec = "https://griptape-cloud-assets.s3.amazonaws.com/Griptape.openapi.yaml"
@@ -137,7 +137,7 @@ def main() -> None:
         source_dir = output_dir / "griptape_cloud_client"
         if source_dir.exists():
             for item in source_dir.iterdir():
-                dest = griptape_cloud_python_client_dir / item.name
+                dest = griptape_cloud_client_dir / item.name
                 if dest.exists():
                     if dest.is_dir():
                         shutil.rmtree(dest)

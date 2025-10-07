@@ -65,7 +65,7 @@ wheels = [
 ]
 
 [[package]]
-name = "griptape-cloud-python-client"
+name = "griptape-cloud-client"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

@@ -20,7 +20,7 @@ Add to your `pyproject.toml`:
 
 ```toml
 [tool.uv.sources]
-griptape-cloud-python-client = { git = "https://github.com/griptape-ai/griptape-cloud-python-client", rev = "main" }
+griptape-cloud-client = { git = "https://github.com/griptape-ai/griptape-cloud-python-client", rev = "main" }
 ```
 
 ### Using pip
