@@ -75,9 +75,11 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
+    { name = "attrs" },
     { name = "mdformat" },
     { name = "openapi-python-client" },
     { name = "pyright" },
+    { name = "python-dateutil" },
     { name = "ruff" },
     { name = "typos" },
 ]
@@ -93,9 +95,11 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "attrs", specifier = ">=22.2.0" },
     { name = "mdformat", specifier = ">=0.7.22" },
     { name = "openapi-python-client", specifier = ">=0.26.2" },
     { name = "pyright", specifier = ">=1.1.396" },
+    { name = "python-dateutil", specifier = ">=2.8.0" },
     { name = "ruff", specifier = ">=0.11.0" },
     { name = "typos", specifier = ">=1.30.2" },
 ]
