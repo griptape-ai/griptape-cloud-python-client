@@ -3,5 +3,5 @@
 **/__pycache__/
 .ruff_cache/
 .vscode/
-griptape_cloud_python_client/generated/
+griptape_cloud_client/generated/
 Griptape.openapi.yaml
