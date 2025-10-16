@@ -69,17 +69,17 @@ name = "griptape-cloud-client"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "attrs" },
     { name = "httpx" },
+    { name = "python-dateutil" },
     { name = "pyyaml" },
 ]
 
 [package.dev-dependencies]
 dev = [
-    { name = "attrs" },
     { name = "mdformat" },
     { name = "openapi-python-client" },
     { name = "pyright" },
-    { name = "python-dateutil" },
     { name = "ruff" },
     { name = "typos" },
 ]
@@ -89,17 +89,17 @@ test = [
 
 [package.metadata]
 requires-dist = [
+    { name = "attrs", specifier = ">=22.2.0" },
     { name = "httpx", specifier = ">=0.28.1" },
+    { name = "python-dateutil", specifier = ">=2.8.0" },
     { name = "pyyaml", specifier = ">=6.0.3" },
 ]
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "attrs", specifier = ">=22.2.0" },
     { name = "mdformat", specifier = ">=0.7.22" },
     { name = "openapi-python-client", specifier = ">=0.26.2" },
     { name = "pyright", specifier = ">=1.1.396" },
-    { name = "python-dateutil", specifier = ">=2.8.0" },
     { name = "ruff", specifier = ">=0.11.0" },
     { name = "typos", specifier = ">=1.30.2" },
 ]
