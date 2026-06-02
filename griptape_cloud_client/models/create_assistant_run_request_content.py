@@ -21,6 +21,7 @@ class CreateAssistantRunRequestContent:
         args (Union[Unset, list[str]]):
         input_ (Union[Unset, str]):
         knowledge_base_ids (Union[Unset, list[str]]):
+        model (Union[Unset, str]):
         new_thread (Union[Unset, bool]): If true, create a new thread for this run to be returned in the response
             thread_id.
         retriever_ids (Union[Unset, list[str]]):
@@ -40,6 +41,7 @@ class CreateAssistantRunRequestContent:
     args: Union[Unset, list[str]] = UNSET
     input_: Union[Unset, str] = UNSET
     knowledge_base_ids: Union[Unset, list[str]] = UNSET
+    model: Union[Unset, str] = UNSET
     new_thread: Union[Unset, bool] = UNSET
     retriever_ids: Union[Unset, list[str]] = UNSET
     ruleset_ids: Union[Unset, list[str]] = UNSET
@@ -79,6 +81,8 @@ class CreateAssistantRunRequestContent:
         knowledge_base_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.knowledge_base_ids, Unset):
             knowledge_base_ids = self.knowledge_base_ids
+
+        model = self.model
 
         new_thread = self.new_thread
 
@@ -121,6 +125,8 @@ class CreateAssistantRunRequestContent:
             field_dict["input"] = input_
         if knowledge_base_ids is not UNSET:
             field_dict["knowledge_base_ids"] = knowledge_base_ids
+        if model is not UNSET:
+            field_dict["model"] = model
         if new_thread is not UNSET:
             field_dict["new_thread"] = new_thread
         if retriever_ids is not UNSET:
@@ -157,6 +163,8 @@ class CreateAssistantRunRequestContent:
 
         knowledge_base_ids = cast(list[str], d.pop("knowledge_base_ids", UNSET))
 
+        model = d.pop("model", UNSET)
+
         new_thread = d.pop("new_thread", UNSET)
 
         retriever_ids = cast(list[str], d.pop("retriever_ids", UNSET))
@@ -180,6 +188,7 @@ class CreateAssistantRunRequestContent:
             args=args,
             input_=input_,
             knowledge_base_ids=knowledge_base_ids,
+            model=model,
             new_thread=new_thread,
             retriever_ids=retriever_ids,
             ruleset_ids=ruleset_ids,

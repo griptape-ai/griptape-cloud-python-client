@@ -15,7 +15,7 @@ def _get_kwargs(
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/structure-runs/{structure_run_id}/events/stream",
+        "url": f"/api/structure-runs/{structure_run_id}/events/stream",
     }
 
     return _kwargs

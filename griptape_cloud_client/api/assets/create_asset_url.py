@@ -22,7 +22,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/buckets/{bucket_id}/asset-urls/{name}",
+        "url": f"/api/buckets/{bucket_id}/asset-urls/{name}",
     }
 
     _kwargs["json"] = body.to_dict()

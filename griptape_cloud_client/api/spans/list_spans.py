@@ -27,7 +27,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/structure-runs/{structure_run_id}/spans",
+        "url": f"/api/structure-runs/{structure_run_id}/spans",
         "params": params,
     }
 

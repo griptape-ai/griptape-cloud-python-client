@@ -1,6 +1,8 @@
 """Contains all the data models used in inputs/outputs"""
 
 from .activity_duration import ActivityDuration
+from .allocate_session_request_content import AllocateSessionRequestContent
+from .allocate_session_response_content import AllocateSessionResponseContent
 from .api_key_detail import ApiKeyDetail
 from .artifact import Artifact
 from .assert_url_operation import AssertUrlOperation
@@ -9,6 +11,7 @@ from .assistant_detail import AssistantDetail
 from .assistant_event_detail import AssistantEventDetail
 from .assistant_run_detail import AssistantRunDetail
 from .assistant_run_status import AssistantRunStatus
+from .auth_config_detail import AuthConfigDetail
 from .bucket_detail import BucketDetail
 from .cancel_assistant_run_response_content import CancelAssistantRunResponseContent
 from .cancel_data_job_response_content import CancelDataJobResponseContent
@@ -37,6 +40,8 @@ from .create_assistant_request_content import CreateAssistantRequestContent
 from .create_assistant_response_content import CreateAssistantResponseContent
 from .create_assistant_run_request_content import CreateAssistantRunRequestContent
 from .create_assistant_run_response_content import CreateAssistantRunResponseContent
+from .create_auth_config_request_content import CreateAuthConfigRequestContent
+from .create_auth_config_response_content import CreateAuthConfigResponseContent
 from .create_billing_management_url_response_content import CreateBillingManagementUrlResponseContent
 from .create_bucket_request_content import CreateBucketRequestContent
 from .create_bucket_response_content import CreateBucketResponseContent
@@ -51,11 +56,17 @@ from .create_connection_response_content import CreateConnectionResponseContent
 from .create_data_connector_request_content import CreateDataConnectorRequestContent
 from .create_data_connector_response_content import CreateDataConnectorResponseContent
 from .create_data_job_response_content import CreateDataJobResponseContent
+from .create_entitlement_policy_request_content import CreateEntitlementPolicyRequestContent
+from .create_entitlement_policy_response_content import CreateEntitlementPolicyResponseContent
 from .create_events_request_content import CreateEventsRequestContent
+from .create_export_job_request_content import CreateExportJobRequestContent
+from .create_export_job_response_content import CreateExportJobResponseContent
 from .create_function_deployment_request_content import CreateFunctionDeploymentRequestContent
 from .create_function_deployment_response_content import CreateFunctionDeploymentResponseContent
 from .create_function_request_content import CreateFunctionRequestContent
 from .create_function_response_content import CreateFunctionResponseContent
+from .create_import_job_request_content import CreateImportJobRequestContent
+from .create_import_job_response_content import CreateImportJobResponseContent
 from .create_integration_request_content import CreateIntegrationRequestContent
 from .create_integration_response_content import CreateIntegrationResponseContent
 from .create_invite_request_content import CreateInviteRequestContent
@@ -65,12 +76,19 @@ from .create_knowledge_base_request_content import CreateKnowledgeBaseRequestCon
 from .create_knowledge_base_response_content import CreateKnowledgeBaseResponseContent
 from .create_library_request_content import CreateLibraryRequestContent
 from .create_library_response_content import CreateLibraryResponseContent
+from .create_license_group_request_content import CreateLicenseGroupRequestContent
+from .create_license_group_response_content import CreateLicenseGroupResponseContent
+from .create_license_request_content import CreateLicenseRequestContent
+from .create_license_response_content import CreateLicenseResponseContent
 from .create_message_request_content import CreateMessageRequestContent
 from .create_message_response_content import CreateMessageResponseContent
+from .create_model_request_content import CreateModelRequestContent
+from .create_model_response_content import CreateModelResponseContent
 from .create_nodes_usage_request_content import CreateNodesUsageRequestContent
 from .create_organization_api_key_request_content import CreateOrganizationApiKeyRequestContent
 from .create_organization_api_key_response_content import CreateOrganizationApiKeyResponseContent
 from .create_organization_request_content import CreateOrganizationRequestContent
+from .create_organization_response_content import CreateOrganizationResponseContent
 from .create_retriever_component_request_content import CreateRetrieverComponentRequestContent
 from .create_retriever_component_response_content import CreateRetrieverComponentResponseContent
 from .create_retriever_request_content import CreateRetrieverRequestContent
@@ -93,6 +111,7 @@ from .create_tool_deployment_request_content import CreateToolDeploymentRequestC
 from .create_tool_deployment_response_content import CreateToolDeploymentResponseContent
 from .create_tool_request_content import CreateToolRequestContent
 from .create_tool_response_content import CreateToolResponseContent
+from .credit_transaction_detail import CreditTransactionDetail
 from .credit_transaction_type import CreditTransactionType
 from .data_connector_config_input_union_type_0 import DataConnectorConfigInputUnionType0
 from .data_connector_config_input_union_type_1 import DataConnectorConfigInputUnionType1
@@ -126,6 +145,7 @@ from .duration_plot import DurationPlot
 from .duration_timeseries_element import DurationTimeseriesElement
 from .embedding_model import EmbeddingModel
 from .entitlement import Entitlement
+from .entitlement_policy_detail import EntitlementPolicyDetail
 from .entry import Entry
 from .env_var import EnvVar
 from .env_var_source import EnvVarSource
@@ -134,6 +154,8 @@ from .error_rate_gauge import ErrorRateGauge
 from .error_type_count import ErrorTypeCount
 from .event_detail import EventDetail
 from .event_input import EventInput
+from .export_job_detail import ExportJobDetail
+from .export_job_status import ExportJobStatus
 from .function_code_type_0 import FunctionCodeType0
 from .function_code_type_1 import FunctionCodeType1
 from .function_code_type_2 import FunctionCodeType2
@@ -145,15 +167,19 @@ from .get_api_key_response_content import GetApiKeyResponseContent
 from .get_asset_response_content import GetAssetResponseContent
 from .get_assistant_response_content import GetAssistantResponseContent
 from .get_assistant_run_response_content import GetAssistantRunResponseContent
+from .get_auth_config_response_content import GetAuthConfigResponseContent
 from .get_bucket_response_content import GetBucketResponseContent
 from .get_config_response_content import GetConfigResponseContent
 from .get_credit_balance_response_content import GetCreditBalanceResponseContent
 from .get_data_connector_response_content import GetDataConnectorResponseContent
 from .get_data_job_response_content import GetDataJobResponseContent
 from .get_deployment_response_content import GetDeploymentResponseContent
+from .get_entitlement_policy_response_content import GetEntitlementPolicyResponseContent
 from .get_event_response_content import GetEventResponseContent
+from .get_export_job_response_content import GetExportJobResponseContent
 from .get_function_response_content import GetFunctionResponseContent
 from .get_function_run_response_content import GetFunctionRunResponseContent
+from .get_import_job_response_content import GetImportJobResponseContent
 from .get_integration_response_content import GetIntegrationResponseContent
 from .get_invite_response_content import GetInviteResponseContent
 from .get_knowledge_base_job_response_content import GetKnowledgeBaseJobResponseContent
@@ -161,12 +187,18 @@ from .get_knowledge_base_query_response_content import GetKnowledgeBaseQueryResp
 from .get_knowledge_base_response_content import GetKnowledgeBaseResponseContent
 from .get_knowledge_base_search_response_content import GetKnowledgeBaseSearchResponseContent
 from .get_library_response_content import GetLibraryResponseContent
+from .get_license_group_response_content import GetLicenseGroupResponseContent
+from .get_license_response_content import GetLicenseResponseContent
 from .get_message_response_content import GetMessageResponseContent
+from .get_model_response_content import GetModelResponseContent
+from .get_organization_response_content import GetOrganizationResponseContent
 from .get_retriever_component_response_content import GetRetrieverComponentResponseContent
 from .get_retriever_response_content import GetRetrieverResponseContent
 from .get_rule_response_content import GetRuleResponseContent
 from .get_ruleset_response_content import GetRulesetResponseContent
 from .get_secret_response_content import GetSecretResponseContent
+from .get_session_pool_response_content import GetSessionPoolResponseContent
+from .get_session_response_content import GetSessionResponseContent
 from .get_structure_response_content import GetStructureResponseContent
 from .get_structure_run_response_content import GetStructureRunResponseContent
 from .get_structures_dashboard_response_content import GetStructuresDashboardResponseContent
@@ -193,6 +225,8 @@ from .gtc_hybid_sqlpg_vector_knowledge_base_detail import GTCHybidSQLPGVectorKno
 from .gtc_hybid_sqlpg_vector_knowledge_base_input import GTCHybidSQLPGVectorKnowledgeBaseInput
 from .gtcpg_vector_knowledge_base_detail import GTCPGVectorKnowledgeBaseDetail
 from .gtcpg_vector_knowledge_base_input import GTCPGVectorKnowledgeBaseInput
+from .import_job_detail import ImportJobDetail
+from .import_job_status import ImportJobStatus
 from .integration_config_input_union_type_0 import IntegrationConfigInputUnionType0
 from .integration_config_input_union_type_1 import IntegrationConfigInputUnionType1
 from .integration_config_input_union_type_2 import IntegrationConfigInputUnionType2
@@ -223,20 +257,29 @@ from .knowledge_base_job_status import KnowledgeBaseJobStatus
 from .knowledge_base_query_detail import KnowledgeBaseQueryDetail
 from .knowledge_base_search_detail import KnowledgeBaseSearchDetail
 from .library_detail import LibraryDetail
+from .license_detail import LicenseDetail
+from .license_group_detail import LicenseGroupDetail
+from .license_status import LicenseStatus
+from .license_type import LicenseType
 from .list_api_keys_response_content import ListApiKeysResponseContent
 from .list_assets_response_content import ListAssetsResponseContent
 from .list_assistant_events_response_content import ListAssistantEventsResponseContent
 from .list_assistant_runs_response_content import ListAssistantRunsResponseContent
 from .list_assistants_response_content import ListAssistantsResponseContent
+from .list_auth_configs_response_content import ListAuthConfigsResponseContent
 from .list_buckets_response_content import ListBucketsResponseContent
 from .list_connections_response_content import ListConnectionsResponseContent
+from .list_credit_transactions_response_content import ListCreditTransactionsResponseContent
 from .list_data_connectors_response_content import ListDataConnectorsResponseContent
 from .list_data_jobs_response_content import ListDataJobsResponseContent
+from .list_entitlement_policies_response_content import ListEntitlementPoliciesResponseContent
 from .list_events_response_content import ListEventsResponseContent
+from .list_export_jobs_response_content import ListExportJobsResponseContent
 from .list_function_deployments_response_content import ListFunctionDeploymentsResponseContent
 from .list_function_run_logs_response_content import ListFunctionRunLogsResponseContent
 from .list_function_runs_response_content import ListFunctionRunsResponseContent
 from .list_functions_response_content import ListFunctionsResponseContent
+from .list_import_jobs_response_content import ListImportJobsResponseContent
 from .list_integrations_response_content import ListIntegrationsResponseContent
 from .list_invites_response_content import ListInvitesResponseContent
 from .list_knowledge_base_jobs_response_content import ListKnowledgeBaseJobsResponseContent
@@ -244,15 +287,19 @@ from .list_knowledge_base_queries_response_content import ListKnowledgeBaseQueri
 from .list_knowledge_base_searches_response_content import ListKnowledgeBaseSearchesResponseContent
 from .list_knowledge_bases_response_content import ListKnowledgeBasesResponseContent
 from .list_libraries_response_content import ListLibrariesResponseContent
+from .list_license_groups_response_content import ListLicenseGroupsResponseContent
+from .list_licenses_response_content import ListLicensesResponseContent
 from .list_messages_response_content import ListMessagesResponseContent
 from .list_models_response_content import ListModelsResponseContent
 from .list_organization_api_keys_response_content import ListOrganizationApiKeysResponseContent
 from .list_organization_users_response_content import ListOrganizationUsersResponseContent
+from .list_organizations_response_content import ListOrganizationsResponseContent
 from .list_retriever_components_response_content import ListRetrieverComponentsResponseContent
 from .list_retrievers_response_content import ListRetrieversResponseContent
 from .list_rules_response_content import ListRulesResponseContent
 from .list_rulesets_response_content import ListRulesetsResponseContent
 from .list_secrets_response_content import ListSecretsResponseContent
+from .list_sessions_response_content import ListSessionsResponseContent
 from .list_spans_response_content import ListSpansResponseContent
 from .list_structure_deployments_response_content import ListStructureDeploymentsResponseContent
 from .list_structure_run_logs_response_content import ListStructureRunLogsResponseContent
@@ -275,6 +322,7 @@ from .model_token_counts import ModelTokenCounts
 from .model_token_counts_map import ModelTokenCountsMap
 from .model_type import ModelType
 from .observability_event import ObservabilityEvent
+from .organization_detail import OrganizationDetail
 from .organization_model_config import OrganizationModelConfig
 from .organization_user_detail import OrganizationUserDetail
 from .pagination import Pagination
@@ -287,6 +335,9 @@ from .query_knowledge_base_request_content import QueryKnowledgeBaseRequestConte
 from .query_knowledge_base_response_content import QueryKnowledgeBaseResponseContent
 from .query_retriever_request_content import QueryRetrieverRequestContent
 from .query_retriever_response_content import QueryRetrieverResponseContent
+from .reissue_license_token_request_content import ReissueLicenseTokenRequestContent
+from .reissue_license_token_response_content import ReissueLicenseTokenResponseContent
+from .renew_session_response_content import RenewSessionResponseContent
 from .respond_to_invite_request_content import RespondToInviteRequestContent
 from .retriever_component_detail import RetrieverComponentDetail
 from .retriever_component_input import RetrieverComponentInput
@@ -301,10 +352,13 @@ from .search_knowledge_base_request_content import SearchKnowledgeBaseRequestCon
 from .search_knowledge_base_response_content import SearchKnowledgeBaseResponseContent
 from .secret_detail import SecretDetail
 from .service_error_response_content import ServiceErrorResponseContent
+from .session_detail import SessionDetail
+from .session_status import SessionStatus
 from .slack_detail import SlackDetail
 from .slack_input import SlackInput
 from .span_detail import SpanDetail
 from .span_status import SpanStatus
+from .start_import_job_response_content import StartImportJobResponseContent
 from .stream_message_content import StreamMessageContent
 from .structure_code_type_0 import StructureCodeType0
 from .structure_code_type_1 import StructureCodeType1
@@ -334,10 +388,14 @@ from .update_api_key_request_content import UpdateApiKeyRequestContent
 from .update_api_key_response_content import UpdateApiKeyResponseContent
 from .update_assistant_request_content import UpdateAssistantRequestContent
 from .update_assistant_response_content import UpdateAssistantResponseContent
+from .update_auth_config_request_content import UpdateAuthConfigRequestContent
+from .update_auth_config_response_content import UpdateAuthConfigResponseContent
 from .update_bucket_request_content import UpdateBucketRequestContent
 from .update_bucket_response_content import UpdateBucketResponseContent
 from .update_data_connector_request_content import UpdateDataConnectorRequestContent
 from .update_data_connector_response_content import UpdateDataConnectorResponseContent
+from .update_entitlement_policy_request_content import UpdateEntitlementPolicyRequestContent
+from .update_entitlement_policy_response_content import UpdateEntitlementPolicyResponseContent
 from .update_function_request_content import UpdateFunctionRequestContent
 from .update_function_response_content import UpdateFunctionResponseContent
 from .update_integration_request_content import UpdateIntegrationRequestContent
@@ -346,9 +404,16 @@ from .update_knowledge_base_request_content import UpdateKnowledgeBaseRequestCon
 from .update_knowledge_base_response_content import UpdateKnowledgeBaseResponseContent
 from .update_library_request_content import UpdateLibraryRequestContent
 from .update_library_response_content import UpdateLibraryResponseContent
+from .update_license_group_request_content import UpdateLicenseGroupRequestContent
+from .update_license_group_response_content import UpdateLicenseGroupResponseContent
+from .update_license_request_content import UpdateLicenseRequestContent
+from .update_license_response_content import UpdateLicenseResponseContent
 from .update_message_request_content import UpdateMessageRequestContent
 from .update_message_response_content import UpdateMessageResponseContent
+from .update_model_request_content import UpdateModelRequestContent
+from .update_model_response_content import UpdateModelResponseContent
 from .update_organization_request_content import UpdateOrganizationRequestContent
+from .update_organization_response_content import UpdateOrganizationResponseContent
 from .update_retriever_component_request_content import UpdateRetrieverComponentRequestContent
 from .update_retriever_component_response_content import UpdateRetrieverComponentResponseContent
 from .update_retriever_request_content import UpdateRetrieverRequestContent
@@ -359,6 +424,8 @@ from .update_ruleset_request_content import UpdateRulesetRequestContent
 from .update_ruleset_response_content import UpdateRulesetResponseContent
 from .update_secret_request_content import UpdateSecretRequestContent
 from .update_secret_response_content import UpdateSecretResponseContent
+from .update_session_request_content import UpdateSessionRequestContent
+from .update_session_response_content import UpdateSessionResponseContent
 from .update_structure_request_content import UpdateStructureRequestContent
 from .update_structure_response_content import UpdateStructureResponseContent
 from .update_thread_request_content import UpdateThreadRequestContent
@@ -373,6 +440,8 @@ from .webscraper_input import WebscraperInput
 
 __all__ = (
     "ActivityDuration",
+    "AllocateSessionRequestContent",
+    "AllocateSessionResponseContent",
     "ApiKeyDetail",
     "Artifact",
     "AssertUrlOperation",
@@ -381,6 +450,7 @@ __all__ = (
     "AssistantEventDetail",
     "AssistantRunDetail",
     "AssistantRunStatus",
+    "AuthConfigDetail",
     "BucketDetail",
     "CancelAssistantRunResponseContent",
     "CancelDataJobResponseContent",
@@ -409,6 +479,8 @@ __all__ = (
     "CreateAssistantResponseContent",
     "CreateAssistantRunRequestContent",
     "CreateAssistantRunResponseContent",
+    "CreateAuthConfigRequestContent",
+    "CreateAuthConfigResponseContent",
     "CreateBillingManagementUrlResponseContent",
     "CreateBucketRequestContent",
     "CreateBucketResponseContent",
@@ -423,11 +495,17 @@ __all__ = (
     "CreateDataConnectorRequestContent",
     "CreateDataConnectorResponseContent",
     "CreateDataJobResponseContent",
+    "CreateEntitlementPolicyRequestContent",
+    "CreateEntitlementPolicyResponseContent",
     "CreateEventsRequestContent",
+    "CreateExportJobRequestContent",
+    "CreateExportJobResponseContent",
     "CreateFunctionDeploymentRequestContent",
     "CreateFunctionDeploymentResponseContent",
     "CreateFunctionRequestContent",
     "CreateFunctionResponseContent",
+    "CreateImportJobRequestContent",
+    "CreateImportJobResponseContent",
     "CreateIntegrationRequestContent",
     "CreateIntegrationResponseContent",
     "CreateInviteRequestContent",
@@ -437,12 +515,19 @@ __all__ = (
     "CreateKnowledgeBaseResponseContent",
     "CreateLibraryRequestContent",
     "CreateLibraryResponseContent",
+    "CreateLicenseGroupRequestContent",
+    "CreateLicenseGroupResponseContent",
+    "CreateLicenseRequestContent",
+    "CreateLicenseResponseContent",
     "CreateMessageRequestContent",
     "CreateMessageResponseContent",
+    "CreateModelRequestContent",
+    "CreateModelResponseContent",
     "CreateNodesUsageRequestContent",
     "CreateOrganizationApiKeyRequestContent",
     "CreateOrganizationApiKeyResponseContent",
     "CreateOrganizationRequestContent",
+    "CreateOrganizationResponseContent",
     "CreateRetrieverComponentRequestContent",
     "CreateRetrieverComponentResponseContent",
     "CreateRetrieverRequestContent",
@@ -465,6 +550,7 @@ __all__ = (
     "CreateToolDeploymentResponseContent",
     "CreateToolRequestContent",
     "CreateToolResponseContent",
+    "CreditTransactionDetail",
     "CreditTransactionType",
     "DataConnectorConfigInputUnionType0",
     "DataConnectorConfigInputUnionType1",
@@ -498,6 +584,7 @@ __all__ = (
     "DurationTimeseriesElement",
     "EmbeddingModel",
     "Entitlement",
+    "EntitlementPolicyDetail",
     "Entry",
     "EnvVar",
     "EnvVarSource",
@@ -506,6 +593,8 @@ __all__ = (
     "ErrorTypeCount",
     "EventDetail",
     "EventInput",
+    "ExportJobDetail",
+    "ExportJobStatus",
     "FunctionCodeType0",
     "FunctionCodeType1",
     "FunctionCodeType2",
@@ -517,15 +606,19 @@ __all__ = (
     "GetAssetResponseContent",
     "GetAssistantResponseContent",
     "GetAssistantRunResponseContent",
+    "GetAuthConfigResponseContent",
     "GetBucketResponseContent",
     "GetConfigResponseContent",
     "GetCreditBalanceResponseContent",
     "GetDataConnectorResponseContent",
     "GetDataJobResponseContent",
     "GetDeploymentResponseContent",
+    "GetEntitlementPolicyResponseContent",
     "GetEventResponseContent",
+    "GetExportJobResponseContent",
     "GetFunctionResponseContent",
     "GetFunctionRunResponseContent",
+    "GetImportJobResponseContent",
     "GetIntegrationResponseContent",
     "GetInviteResponseContent",
     "GetKnowledgeBaseJobResponseContent",
@@ -533,12 +626,18 @@ __all__ = (
     "GetKnowledgeBaseResponseContent",
     "GetKnowledgeBaseSearchResponseContent",
     "GetLibraryResponseContent",
+    "GetLicenseGroupResponseContent",
+    "GetLicenseResponseContent",
     "GetMessageResponseContent",
+    "GetModelResponseContent",
+    "GetOrganizationResponseContent",
     "GetRetrieverComponentResponseContent",
     "GetRetrieverResponseContent",
     "GetRuleResponseContent",
     "GetRulesetResponseContent",
     "GetSecretResponseContent",
+    "GetSessionPoolResponseContent",
+    "GetSessionResponseContent",
     "GetStructureResponseContent",
     "GetStructureRunResponseContent",
     "GetStructuresDashboardResponseContent",
@@ -565,6 +664,8 @@ __all__ = (
     "GTCHybidSQLPGVectorKnowledgeBaseInput",
     "GTCPGVectorKnowledgeBaseDetail",
     "GTCPGVectorKnowledgeBaseInput",
+    "ImportJobDetail",
+    "ImportJobStatus",
     "IntegrationConfigInputUnionType0",
     "IntegrationConfigInputUnionType1",
     "IntegrationConfigInputUnionType2",
@@ -595,20 +696,29 @@ __all__ = (
     "KnowledgeBaseQueryDetail",
     "KnowledgeBaseSearchDetail",
     "LibraryDetail",
+    "LicenseDetail",
+    "LicenseGroupDetail",
+    "LicenseStatus",
+    "LicenseType",
     "ListApiKeysResponseContent",
     "ListAssetsResponseContent",
     "ListAssistantEventsResponseContent",
     "ListAssistantRunsResponseContent",
     "ListAssistantsResponseContent",
+    "ListAuthConfigsResponseContent",
     "ListBucketsResponseContent",
     "ListConnectionsResponseContent",
+    "ListCreditTransactionsResponseContent",
     "ListDataConnectorsResponseContent",
     "ListDataJobsResponseContent",
+    "ListEntitlementPoliciesResponseContent",
     "ListEventsResponseContent",
+    "ListExportJobsResponseContent",
     "ListFunctionDeploymentsResponseContent",
     "ListFunctionRunLogsResponseContent",
     "ListFunctionRunsResponseContent",
     "ListFunctionsResponseContent",
+    "ListImportJobsResponseContent",
     "ListIntegrationsResponseContent",
     "ListInvitesResponseContent",
     "ListKnowledgeBaseJobsResponseContent",
@@ -616,15 +726,19 @@ __all__ = (
     "ListKnowledgeBaseSearchesResponseContent",
     "ListKnowledgeBasesResponseContent",
     "ListLibrariesResponseContent",
+    "ListLicenseGroupsResponseContent",
+    "ListLicensesResponseContent",
     "ListMessagesResponseContent",
     "ListModelsResponseContent",
     "ListOrganizationApiKeysResponseContent",
+    "ListOrganizationsResponseContent",
     "ListOrganizationUsersResponseContent",
     "ListRetrieverComponentsResponseContent",
     "ListRetrieversResponseContent",
     "ListRulesetsResponseContent",
     "ListRulesResponseContent",
     "ListSecretsResponseContent",
+    "ListSessionsResponseContent",
     "ListSpansResponseContent",
     "ListStructureDeploymentsResponseContent",
     "ListStructureRunLogsResponseContent",
@@ -647,6 +761,7 @@ __all__ = (
     "ModelTokenCountsMap",
     "ModelType",
     "ObservabilityEvent",
+    "OrganizationDetail",
     "OrganizationModelConfig",
     "OrganizationUserDetail",
     "Pagination",
@@ -659,6 +774,9 @@ __all__ = (
     "QueryKnowledgeBaseResponseContent",
     "QueryRetrieverRequestContent",
     "QueryRetrieverResponseContent",
+    "ReissueLicenseTokenRequestContent",
+    "ReissueLicenseTokenResponseContent",
+    "RenewSessionResponseContent",
     "RespondToInviteRequestContent",
     "RetrieverComponentDetail",
     "RetrieverComponentInput",
@@ -673,10 +791,13 @@ __all__ = (
     "SearchKnowledgeBaseResponseContent",
     "SecretDetail",
     "ServiceErrorResponseContent",
+    "SessionDetail",
+    "SessionStatus",
     "SlackDetail",
     "SlackInput",
     "SpanDetail",
     "SpanStatus",
+    "StartImportJobResponseContent",
     "StreamMessageContent",
     "StructureCodeType0",
     "StructureCodeType1",
@@ -706,10 +827,14 @@ __all__ = (
     "UpdateApiKeyResponseContent",
     "UpdateAssistantRequestContent",
     "UpdateAssistantResponseContent",
+    "UpdateAuthConfigRequestContent",
+    "UpdateAuthConfigResponseContent",
     "UpdateBucketRequestContent",
     "UpdateBucketResponseContent",
     "UpdateDataConnectorRequestContent",
     "UpdateDataConnectorResponseContent",
+    "UpdateEntitlementPolicyRequestContent",
+    "UpdateEntitlementPolicyResponseContent",
     "UpdateFunctionRequestContent",
     "UpdateFunctionResponseContent",
     "UpdateIntegrationRequestContent",
@@ -718,9 +843,16 @@ __all__ = (
     "UpdateKnowledgeBaseResponseContent",
     "UpdateLibraryRequestContent",
     "UpdateLibraryResponseContent",
+    "UpdateLicenseGroupRequestContent",
+    "UpdateLicenseGroupResponseContent",
+    "UpdateLicenseRequestContent",
+    "UpdateLicenseResponseContent",
     "UpdateMessageRequestContent",
     "UpdateMessageResponseContent",
+    "UpdateModelRequestContent",
+    "UpdateModelResponseContent",
     "UpdateOrganizationRequestContent",
+    "UpdateOrganizationResponseContent",
     "UpdateRetrieverComponentRequestContent",
     "UpdateRetrieverComponentResponseContent",
     "UpdateRetrieverRequestContent",
@@ -731,6 +863,8 @@ __all__ = (
     "UpdateRulesetResponseContent",
     "UpdateSecretRequestContent",
     "UpdateSecretResponseContent",
+    "UpdateSessionRequestContent",
+    "UpdateSessionResponseContent",
     "UpdateStructureRequestContent",
     "UpdateStructureResponseContent",
     "UpdateThreadRequestContent",

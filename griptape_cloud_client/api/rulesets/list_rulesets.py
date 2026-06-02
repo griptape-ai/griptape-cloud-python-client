@@ -29,7 +29,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/rulesets",
+        "url": "/api/rulesets",
         "params": params,
     }
 

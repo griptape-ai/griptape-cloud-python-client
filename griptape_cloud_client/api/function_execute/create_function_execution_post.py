@@ -19,7 +19,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/functions/{function_id}/execute",
+        "url": f"/api/functions/{function_id}/execute",
     }
 
     _kwargs["json"] = body

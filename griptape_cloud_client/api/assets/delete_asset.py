@@ -16,7 +16,7 @@ def _get_kwargs(
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "delete",
-        "url": f"/buckets/{bucket_id}/assets/{name}",
+        "url": f"/api/buckets/{bucket_id}/assets/{name}",
     }
 
     return _kwargs

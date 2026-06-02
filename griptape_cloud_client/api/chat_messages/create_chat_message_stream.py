@@ -20,7 +20,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/chat/messages/stream",
+        "url": "/api/chat/messages/stream",
     }
 
     _kwargs["json"] = body.to_dict()

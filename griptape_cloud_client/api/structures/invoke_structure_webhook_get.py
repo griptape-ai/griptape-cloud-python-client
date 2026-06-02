@@ -24,7 +24,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/structures/{structure_id}/webhook",
+        "url": f"/api/structures/{structure_id}/webhook",
         "params": params,
     }
 
