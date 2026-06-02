@@ -16,6 +16,7 @@ class UpdateAssistantRequestContent:
         description (Union[Unset, str]):
         input_ (Union[Unset, str]):
         knowledge_base_ids (Union[Unset, list[str]]):
+        model (Union[Unset, str]):
         name (Union[Unset, str]):
         ruleset_ids (Union[Unset, list[str]]):
         structure_ids (Union[Unset, list[str]]):
@@ -25,6 +26,7 @@ class UpdateAssistantRequestContent:
     description: Union[Unset, str] = UNSET
     input_: Union[Unset, str] = UNSET
     knowledge_base_ids: Union[Unset, list[str]] = UNSET
+    model: Union[Unset, str] = UNSET
     name: Union[Unset, str] = UNSET
     ruleset_ids: Union[Unset, list[str]] = UNSET
     structure_ids: Union[Unset, list[str]] = UNSET
@@ -39,6 +41,8 @@ class UpdateAssistantRequestContent:
         knowledge_base_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.knowledge_base_ids, Unset):
             knowledge_base_ids = self.knowledge_base_ids
+
+        model = self.model
 
         name = self.name
 
@@ -63,6 +67,8 @@ class UpdateAssistantRequestContent:
             field_dict["input"] = input_
         if knowledge_base_ids is not UNSET:
             field_dict["knowledge_base_ids"] = knowledge_base_ids
+        if model is not UNSET:
+            field_dict["model"] = model
         if name is not UNSET:
             field_dict["name"] = name
         if ruleset_ids is not UNSET:
@@ -83,6 +89,8 @@ class UpdateAssistantRequestContent:
 
         knowledge_base_ids = cast(list[str], d.pop("knowledge_base_ids", UNSET))
 
+        model = d.pop("model", UNSET)
+
         name = d.pop("name", UNSET)
 
         ruleset_ids = cast(list[str], d.pop("ruleset_ids", UNSET))
@@ -95,6 +103,7 @@ class UpdateAssistantRequestContent:
             description=description,
             input_=input_,
             knowledge_base_ids=knowledge_base_ids,
+            model=model,
             name=name,
             ruleset_ids=ruleset_ids,
             structure_ids=structure_ids,

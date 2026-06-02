@@ -31,6 +31,7 @@ class CreateAssistantRunResponseContent:
         tool_ids (list[str]):
         updated_at (datetime.datetime):
         input_ (Union[Unset, str]):
+        model (Union[Unset, str]):
         output (Union[Unset, Any]):
         status_detail (Union[Unset, Any]):
         thread_id (Union[Unset, str]):
@@ -51,6 +52,7 @@ class CreateAssistantRunResponseContent:
     tool_ids: list[str]
     updated_at: datetime.datetime
     input_: Union[Unset, str] = UNSET
+    model: Union[Unset, str] = UNSET
     output: Union[Unset, Any] = UNSET
     status_detail: Union[Unset, Any] = UNSET
     thread_id: Union[Unset, str] = UNSET
@@ -91,6 +93,8 @@ class CreateAssistantRunResponseContent:
 
         input_ = self.input_
 
+        model = self.model
+
         output = self.output
 
         status_detail = self.status_detail
@@ -119,6 +123,8 @@ class CreateAssistantRunResponseContent:
         )
         if input_ is not UNSET:
             field_dict["input"] = input_
+        if model is not UNSET:
+            field_dict["model"] = model
         if output is not UNSET:
             field_dict["output"] = output
         if status_detail is not UNSET:
@@ -174,6 +180,8 @@ class CreateAssistantRunResponseContent:
 
         input_ = d.pop("input", UNSET)
 
+        model = d.pop("model", UNSET)
+
         output = d.pop("output", UNSET)
 
         status_detail = d.pop("status_detail", UNSET)
@@ -196,6 +204,7 @@ class CreateAssistantRunResponseContent:
             tool_ids=tool_ids,
             updated_at=updated_at,
             input_=input_,
+            model=model,
             output=output,
             status_detail=status_detail,
             thread_id=thread_id,

@@ -44,7 +44,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/dashboards/structures",
+        "url": "/api/dashboards/structures",
         "params": params,
     }
 

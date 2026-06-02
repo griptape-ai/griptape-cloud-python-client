@@ -28,6 +28,7 @@ class CreateAssistantResponseContent:
         tool_ids (list[str]):
         updated_at (datetime.datetime):
         input_ (Union[Unset, str]):
+        model (Union[Unset, str]):
     """
 
     assistant_id: str
@@ -43,6 +44,7 @@ class CreateAssistantResponseContent:
     tool_ids: list[str]
     updated_at: datetime.datetime
     input_: Union[Unset, str] = UNSET
+    model: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -72,6 +74,8 @@ class CreateAssistantResponseContent:
 
         input_ = self.input_
 
+        model = self.model
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -92,6 +96,8 @@ class CreateAssistantResponseContent:
         )
         if input_ is not UNSET:
             field_dict["input"] = input_
+        if model is not UNSET:
+            field_dict["model"] = model
 
         return field_dict
 
@@ -124,6 +130,8 @@ class CreateAssistantResponseContent:
 
         input_ = d.pop("input", UNSET)
 
+        model = d.pop("model", UNSET)
+
         create_assistant_response_content = cls(
             assistant_id=assistant_id,
             created_at=created_at,
@@ -138,6 +146,7 @@ class CreateAssistantResponseContent:
             tool_ids=tool_ids,
             updated_at=updated_at,
             input_=input_,
+            model=model,
         )
 
         create_assistant_response_content.additional_properties = d

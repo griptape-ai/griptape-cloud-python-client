@@ -14,13 +14,18 @@ T = TypeVar("T", bound="CreateAssetUrlRequestContent")
 class CreateAssetUrlRequestContent:
     """
     Attributes:
+        content_type (Union[Unset, str]): Optional MIME type to apply to the presigned URL. When provided, overrides the
+            type guessed from the asset name. Must be of the form 'type/subtype'.
         operation (Union[Unset, AssertUrlOperation]):
     """
 
+    content_type: Union[Unset, str] = UNSET
     operation: Union[Unset, AssertUrlOperation] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        content_type = self.content_type
+
         operation: Union[Unset, str] = UNSET
         if not isinstance(self.operation, Unset):
             operation = self.operation.value
@@ -28,6 +33,8 @@ class CreateAssetUrlRequestContent:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if content_type is not UNSET:
+            field_dict["content_type"] = content_type
         if operation is not UNSET:
             field_dict["operation"] = operation
 
@@ -36,6 +43,8 @@ class CreateAssetUrlRequestContent:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        content_type = d.pop("content_type", UNSET)
+
         _operation = d.pop("operation", UNSET)
         operation: Union[Unset, AssertUrlOperation]
         if isinstance(_operation, Unset):
@@ -44,6 +53,7 @@ class CreateAssetUrlRequestContent:
             operation = AssertUrlOperation(_operation)
 
         create_asset_url_request_content = cls(
+            content_type=content_type,
             operation=operation,
         )
 

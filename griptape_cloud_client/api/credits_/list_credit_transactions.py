@@ -6,6 +6,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.client_error_response_content import ClientErrorResponseContent
+from ...models.list_credit_transactions_response_content import ListCreditTransactionsResponseContent
 from ...models.service_error_response_content import ServiceErrorResponseContent
 from ...types import UNSET, Response, Unset
 
@@ -34,7 +35,12 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ClientErrorResponseContent, ServiceErrorResponseContent]]:
+) -> Optional[Union[ClientErrorResponseContent, ListCreditTransactionsResponseContent, ServiceErrorResponseContent]]:
+    if response.status_code == 200:
+        response_200 = ListCreditTransactionsResponseContent.from_dict(response.json())
+
+        return response_200
+
     if response.status_code == 400:
         response_400 = ClientErrorResponseContent.from_dict(response.json())
 
@@ -83,7 +89,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ClientErrorResponseContent, ServiceErrorResponseContent]]:
+) -> Response[Union[ClientErrorResponseContent, ListCreditTransactionsResponseContent, ServiceErrorResponseContent]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -97,7 +103,7 @@ def sync_detailed(
     client: Union[AuthenticatedClient, Client],
     page: Union[Unset, float] = UNSET,
     page_size: Union[Unset, float] = UNSET,
-) -> Response[Union[ClientErrorResponseContent, ServiceErrorResponseContent]]:
+) -> Response[Union[ClientErrorResponseContent, ListCreditTransactionsResponseContent, ServiceErrorResponseContent]]:
     """
     Args:
         page (Union[Unset, float]):
@@ -108,7 +114,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ClientErrorResponseContent, ServiceErrorResponseContent]]
+        Response[Union[ClientErrorResponseContent, ListCreditTransactionsResponseContent, ServiceErrorResponseContent]]
     """
 
     kwargs = _get_kwargs(
@@ -128,7 +134,7 @@ def sync(
     client: Union[AuthenticatedClient, Client],
     page: Union[Unset, float] = UNSET,
     page_size: Union[Unset, float] = UNSET,
-) -> Optional[Union[ClientErrorResponseContent, ServiceErrorResponseContent]]:
+) -> Optional[Union[ClientErrorResponseContent, ListCreditTransactionsResponseContent, ServiceErrorResponseContent]]:
     """
     Args:
         page (Union[Unset, float]):
@@ -139,7 +145,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ClientErrorResponseContent, ServiceErrorResponseContent]
+        Union[ClientErrorResponseContent, ListCreditTransactionsResponseContent, ServiceErrorResponseContent]
     """
 
     return sync_detailed(
@@ -154,7 +160,7 @@ async def asyncio_detailed(
     client: Union[AuthenticatedClient, Client],
     page: Union[Unset, float] = UNSET,
     page_size: Union[Unset, float] = UNSET,
-) -> Response[Union[ClientErrorResponseContent, ServiceErrorResponseContent]]:
+) -> Response[Union[ClientErrorResponseContent, ListCreditTransactionsResponseContent, ServiceErrorResponseContent]]:
     """
     Args:
         page (Union[Unset, float]):
@@ -165,7 +171,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ClientErrorResponseContent, ServiceErrorResponseContent]]
+        Response[Union[ClientErrorResponseContent, ListCreditTransactionsResponseContent, ServiceErrorResponseContent]]
     """
 
     kwargs = _get_kwargs(
@@ -183,7 +189,7 @@ async def asyncio(
     client: Union[AuthenticatedClient, Client],
     page: Union[Unset, float] = UNSET,
     page_size: Union[Unset, float] = UNSET,
-) -> Optional[Union[ClientErrorResponseContent, ServiceErrorResponseContent]]:
+) -> Optional[Union[ClientErrorResponseContent, ListCreditTransactionsResponseContent, ServiceErrorResponseContent]]:
     """
     Args:
         page (Union[Unset, float]):
@@ -194,7 +200,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ClientErrorResponseContent, ServiceErrorResponseContent]
+        Union[ClientErrorResponseContent, ListCreditTransactionsResponseContent, ServiceErrorResponseContent]
     """
 
     return (

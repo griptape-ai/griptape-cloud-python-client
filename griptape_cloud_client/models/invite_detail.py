@@ -22,6 +22,7 @@ class InviteDetail:
         expires_at (datetime.datetime):
         invite_id (str):
         organization_id (str):
+        organization_name (str):
         status (InviteStatus):
         responded_at (Union[Unset, datetime.datetime]):
     """
@@ -32,6 +33,7 @@ class InviteDetail:
     expires_at: datetime.datetime
     invite_id: str
     organization_id: str
+    organization_name: str
     status: InviteStatus
     responded_at: Union[Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -49,6 +51,8 @@ class InviteDetail:
 
         organization_id = self.organization_id
 
+        organization_name = self.organization_name
+
         status = self.status.value
 
         responded_at: Union[Unset, str] = UNSET
@@ -65,6 +69,7 @@ class InviteDetail:
                 "expires_at": expires_at,
                 "invite_id": invite_id,
                 "organization_id": organization_id,
+                "organization_name": organization_name,
                 "status": status,
             }
         )
@@ -88,6 +93,8 @@ class InviteDetail:
 
         organization_id = d.pop("organization_id")
 
+        organization_name = d.pop("organization_name")
+
         status = InviteStatus(d.pop("status"))
 
         _responded_at = d.pop("responded_at", UNSET)
@@ -104,6 +111,7 @@ class InviteDetail:
             expires_at=expires_at,
             invite_id=invite_id,
             organization_id=organization_id,
+            organization_name=organization_name,
             status=status,
             responded_at=responded_at,
         )

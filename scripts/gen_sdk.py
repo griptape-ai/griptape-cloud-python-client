@@ -30,6 +30,26 @@ def _strip_oneof_titles(spec: dict) -> None:
                 del item["title"]
 
 
+def _collapse_allof_default(spec: dict) -> None:
+    """Hoist a standalone `default` out of an allOf.
+
+    Pydantic emits enum defaults as `allOf: [{$ref: ...}, {default: X}]`. The
+    bare `{default: X}` member has no type or $ref, which openapi-python-client
+    rejects as "a non-object" and then drops the whole schema. Collapse it by
+    removing that member and hoisting the default onto the schema itself.
+    """
+    allof = spec.get("allOf")
+    if not isinstance(allof, list):
+        return
+    kept = []
+    for item in allof:
+        if isinstance(item, dict) and set(item.keys()) == {"default"}:
+            spec["default"] = item["default"]
+        else:
+            kept.append(item)
+    spec["allOf"] = kept
+
+
 def _handle_create_asset_operation(spec: dict) -> None:
     """Handle CreateAsset operation by cloning 201 response to 200."""
     if spec.get("operationId") != "CreateAsset":
@@ -54,6 +74,9 @@ def recurse_openapi_spec_for_edits(spec: dict | list) -> None:
 
         # Strip oneOf titles
         _strip_oneof_titles(spec)
+
+        # Collapse allOf with a standalone default
+        _collapse_allof_default(spec)
 
         # Handle CreateAsset operation
         _handle_create_asset_operation(spec)

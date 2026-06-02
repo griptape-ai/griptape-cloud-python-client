@@ -15,7 +15,7 @@ def _get_kwargs(
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "delete",
-        "url": f"/assistants/{assistant_id}",
+        "url": f"/api/assistants/{assistant_id}",
     }
 
     return _kwargs

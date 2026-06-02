@@ -7,6 +7,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.client_error_response_content import ClientErrorResponseContent
 from ...models.create_organization_request_content import CreateOrganizationRequestContent
+from ...models.create_organization_response_content import CreateOrganizationResponseContent
 from ...models.service_error_response_content import ServiceErrorResponseContent
 from ...types import Response
 
@@ -19,7 +20,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/organizations",
+        "url": "/api/organizations",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -32,7 +33,12 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ClientErrorResponseContent, ServiceErrorResponseContent]]:
+) -> Optional[Union[ClientErrorResponseContent, CreateOrganizationResponseContent, ServiceErrorResponseContent]]:
+    if response.status_code == 201:
+        response_201 = CreateOrganizationResponseContent.from_dict(response.json())
+
+        return response_201
+
     if response.status_code == 400:
         response_400 = ClientErrorResponseContent.from_dict(response.json())
 
@@ -81,7 +87,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ClientErrorResponseContent, ServiceErrorResponseContent]]:
+) -> Response[Union[ClientErrorResponseContent, CreateOrganizationResponseContent, ServiceErrorResponseContent]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -94,7 +100,7 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: CreateOrganizationRequestContent,
-) -> Response[Union[ClientErrorResponseContent, ServiceErrorResponseContent]]:
+) -> Response[Union[ClientErrorResponseContent, CreateOrganizationResponseContent, ServiceErrorResponseContent]]:
     """
     Args:
         body (CreateOrganizationRequestContent):
@@ -104,7 +110,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ClientErrorResponseContent, ServiceErrorResponseContent]]
+        Response[Union[ClientErrorResponseContent, CreateOrganizationResponseContent, ServiceErrorResponseContent]]
     """
 
     kwargs = _get_kwargs(
@@ -122,7 +128,7 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
     body: CreateOrganizationRequestContent,
-) -> Optional[Union[ClientErrorResponseContent, ServiceErrorResponseContent]]:
+) -> Optional[Union[ClientErrorResponseContent, CreateOrganizationResponseContent, ServiceErrorResponseContent]]:
     """
     Args:
         body (CreateOrganizationRequestContent):
@@ -132,7 +138,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ClientErrorResponseContent, ServiceErrorResponseContent]
+        Union[ClientErrorResponseContent, CreateOrganizationResponseContent, ServiceErrorResponseContent]
     """
 
     return sync_detailed(
@@ -145,7 +151,7 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: CreateOrganizationRequestContent,
-) -> Response[Union[ClientErrorResponseContent, ServiceErrorResponseContent]]:
+) -> Response[Union[ClientErrorResponseContent, CreateOrganizationResponseContent, ServiceErrorResponseContent]]:
     """
     Args:
         body (CreateOrganizationRequestContent):
@@ -155,7 +161,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ClientErrorResponseContent, ServiceErrorResponseContent]]
+        Response[Union[ClientErrorResponseContent, CreateOrganizationResponseContent, ServiceErrorResponseContent]]
     """
 
     kwargs = _get_kwargs(
@@ -171,7 +177,7 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
     body: CreateOrganizationRequestContent,
-) -> Optional[Union[ClientErrorResponseContent, ServiceErrorResponseContent]]:
+) -> Optional[Union[ClientErrorResponseContent, CreateOrganizationResponseContent, ServiceErrorResponseContent]]:
     """
     Args:
         body (CreateOrganizationRequestContent):
@@ -181,7 +187,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ClientErrorResponseContent, ServiceErrorResponseContent]
+        Union[ClientErrorResponseContent, CreateOrganizationResponseContent, ServiceErrorResponseContent]
     """
 
     return (

@@ -14,7 +14,7 @@ from ...types import Response
 def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/billing/management-url",
+        "url": "/api/billing/management-url",
     }
 
     return _kwargs

@@ -38,7 +38,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/structures/{structure_id}/deployments",
+        "url": f"/api/structures/{structure_id}/deployments",
         "params": params,
     }
 
