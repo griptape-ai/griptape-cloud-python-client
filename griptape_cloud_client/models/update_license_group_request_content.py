@@ -20,6 +20,7 @@ class UpdateLicenseGroupRequestContent:
         description (Union[Unset, str]):
         entitlement_policy_ids (Union[Unset, list[str]]):
         license_ids (Union[Unset, list[str]]):
+        managed_policy_ids (Union[Unset, list[str]]):
         metadata (Union[Unset, Metadata]):
         name (Union[Unset, str]):
     """
@@ -27,6 +28,7 @@ class UpdateLicenseGroupRequestContent:
     description: Union[Unset, str] = UNSET
     entitlement_policy_ids: Union[Unset, list[str]] = UNSET
     license_ids: Union[Unset, list[str]] = UNSET
+    managed_policy_ids: Union[Unset, list[str]] = UNSET
     metadata: Union[Unset, "Metadata"] = UNSET
     name: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -41,6 +43,10 @@ class UpdateLicenseGroupRequestContent:
         license_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.license_ids, Unset):
             license_ids = self.license_ids
+
+        managed_policy_ids: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.managed_policy_ids, Unset):
+            managed_policy_ids = self.managed_policy_ids
 
         metadata: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.metadata, Unset):
@@ -57,6 +63,8 @@ class UpdateLicenseGroupRequestContent:
             field_dict["entitlement_policy_ids"] = entitlement_policy_ids
         if license_ids is not UNSET:
             field_dict["license_ids"] = license_ids
+        if managed_policy_ids is not UNSET:
+            field_dict["managed_policy_ids"] = managed_policy_ids
         if metadata is not UNSET:
             field_dict["metadata"] = metadata
         if name is not UNSET:
@@ -75,6 +83,8 @@ class UpdateLicenseGroupRequestContent:
 
         license_ids = cast(list[str], d.pop("license_ids", UNSET))
 
+        managed_policy_ids = cast(list[str], d.pop("managed_policy_ids", UNSET))
+
         _metadata = d.pop("metadata", UNSET)
         metadata: Union[Unset, Metadata]
         if isinstance(_metadata, Unset):
@@ -88,6 +98,7 @@ class UpdateLicenseGroupRequestContent:
             description=description,
             entitlement_policy_ids=entitlement_policy_ids,
             license_ids=license_ids,
+            managed_policy_ids=managed_policy_ids,
             metadata=metadata,
             name=name,
         )

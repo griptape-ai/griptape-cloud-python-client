@@ -11,7 +11,6 @@ from ..models.integration_type import IntegrationType
 if TYPE_CHECKING:
     from ..models.integration_config_union_type_0 import IntegrationConfigUnionType0
     from ..models.integration_config_union_type_1 import IntegrationConfigUnionType1
-    from ..models.integration_config_union_type_2 import IntegrationConfigUnionType2
 
 
 T = TypeVar("T", bound="CreateIntegrationResponseContent")
@@ -21,8 +20,7 @@ T = TypeVar("T", bound="CreateIntegrationResponseContent")
 class CreateIntegrationResponseContent:
     """
     Attributes:
-        assistant_ids (list[str]):
-        config (Union['IntegrationConfigUnionType0', 'IntegrationConfigUnionType1', 'IntegrationConfigUnionType2']):
+        config (Union['IntegrationConfigUnionType0', 'IntegrationConfigUnionType1']):
         created_at (datetime.datetime):
         created_by (str):
         description (str):
@@ -34,8 +32,7 @@ class CreateIntegrationResponseContent:
         updated_at (datetime.datetime):
     """
 
-    assistant_ids: list[str]
-    config: Union["IntegrationConfigUnionType0", "IntegrationConfigUnionType1", "IntegrationConfigUnionType2"]
+    config: Union["IntegrationConfigUnionType0", "IntegrationConfigUnionType1"]
     created_at: datetime.datetime
     created_by: str
     description: str
@@ -49,14 +46,9 @@ class CreateIntegrationResponseContent:
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.integration_config_union_type_0 import IntegrationConfigUnionType0
-        from ..models.integration_config_union_type_1 import IntegrationConfigUnionType1
-
-        assistant_ids = self.assistant_ids
 
         config: dict[str, Any]
         if isinstance(self.config, IntegrationConfigUnionType0):
-            config = self.config.to_dict()
-        elif isinstance(self.config, IntegrationConfigUnionType1):
             config = self.config.to_dict()
         else:
             config = self.config.to_dict()
@@ -83,7 +75,6 @@ class CreateIntegrationResponseContent:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "assistant_ids": assistant_ids,
                 "config": config,
                 "created_at": created_at,
                 "created_by": created_by,
@@ -103,14 +94,10 @@ class CreateIntegrationResponseContent:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.integration_config_union_type_0 import IntegrationConfigUnionType0
         from ..models.integration_config_union_type_1 import IntegrationConfigUnionType1
-        from ..models.integration_config_union_type_2 import IntegrationConfigUnionType2
 
         d = dict(src_dict)
-        assistant_ids = cast(list[str], d.pop("assistant_ids"))
 
-        def _parse_config(
-            data: object,
-        ) -> Union["IntegrationConfigUnionType0", "IntegrationConfigUnionType1", "IntegrationConfigUnionType2"]:
+        def _parse_config(data: object) -> Union["IntegrationConfigUnionType0", "IntegrationConfigUnionType1"]:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
@@ -119,19 +106,11 @@ class CreateIntegrationResponseContent:
                 return componentsschemas_integration_config_union_type_0
             except:  # noqa: E722
                 pass
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                componentsschemas_integration_config_union_type_1 = IntegrationConfigUnionType1.from_dict(data)
-
-                return componentsschemas_integration_config_union_type_1
-            except:  # noqa: E722
-                pass
             if not isinstance(data, dict):
                 raise TypeError()
-            componentsschemas_integration_config_union_type_2 = IntegrationConfigUnionType2.from_dict(data)
+            componentsschemas_integration_config_union_type_1 = IntegrationConfigUnionType1.from_dict(data)
 
-            return componentsschemas_integration_config_union_type_2
+            return componentsschemas_integration_config_union_type_1
 
         config = _parse_config(d.pop("config"))
 
@@ -154,7 +133,6 @@ class CreateIntegrationResponseContent:
         updated_at = isoparse(d.pop("updated_at"))
 
         create_integration_response_content = cls(
-            assistant_ids=assistant_ids,
             config=config,
             created_at=created_at,
             created_by=created_by,

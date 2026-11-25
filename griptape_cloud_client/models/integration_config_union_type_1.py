@@ -5,7 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.git_hub_app_detail import GitHubAppDetail
+    from ..models.webhook_detail import WebhookDetail
 
 
 T = TypeVar("T", bound="IntegrationConfigUnionType1")
@@ -15,20 +15,20 @@ T = TypeVar("T", bound="IntegrationConfigUnionType1")
 class IntegrationConfigUnionType1:
     """
     Attributes:
-        github_app (GitHubAppDetail):
+        webhook (WebhookDetail):
     """
 
-    github_app: "GitHubAppDetail"
+    webhook: "WebhookDetail"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        github_app = self.github_app.to_dict()
+        webhook = self.webhook.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "github_app": github_app,
+                "webhook": webhook,
             }
         )
 
@@ -36,13 +36,13 @@ class IntegrationConfigUnionType1:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.git_hub_app_detail import GitHubAppDetail
+        from ..models.webhook_detail import WebhookDetail
 
         d = dict(src_dict)
-        github_app = GitHubAppDetail.from_dict(d.pop("github_app"))
+        webhook = WebhookDetail.from_dict(d.pop("webhook"))
 
         integration_config_union_type_1 = cls(
-            github_app=github_app,
+            webhook=webhook,
         )
 
         integration_config_union_type_1.additional_properties = d

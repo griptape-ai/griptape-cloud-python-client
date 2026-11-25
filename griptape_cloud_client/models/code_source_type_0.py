@@ -15,7 +15,8 @@ T = TypeVar("T", bound="CodeSourceType0")
 class CodeSourceType0:
     """
     Attributes:
-        github (GithubCodeSource):
+        github (GithubCodeSource): The code source of a past deployment from GitHub. Deploying from GitHub is no
+            longer supported.
     """
 
     github: "GithubCodeSource"

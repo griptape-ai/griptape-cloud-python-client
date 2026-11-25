@@ -12,7 +12,6 @@ if TYPE_CHECKING:
     from ..models.env_var import EnvVar
     from ..models.structure_code_type_0 import StructureCodeType0
     from ..models.structure_code_type_1 import StructureCodeType1
-    from ..models.structure_code_type_2 import StructureCodeType2
 
 
 T = TypeVar("T", bound="CreateStructureResponseContent")
@@ -22,7 +21,7 @@ T = TypeVar("T", bound="CreateStructureResponseContent")
 class CreateStructureResponseContent:
     """
     Attributes:
-        code (Union['StructureCodeType0', 'StructureCodeType1', 'StructureCodeType2']):
+        code (Union['StructureCodeType0', 'StructureCodeType1']):
         created_at (datetime.datetime):
         created_by (str):
         description (str):
@@ -36,7 +35,7 @@ class CreateStructureResponseContent:
         structure_config_file (Union[Unset, str]):
     """
 
-    code: Union["StructureCodeType0", "StructureCodeType1", "StructureCodeType2"]
+    code: Union["StructureCodeType0", "StructureCodeType1"]
     created_at: datetime.datetime
     created_by: str
     description: str
@@ -52,12 +51,9 @@ class CreateStructureResponseContent:
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.structure_code_type_0 import StructureCodeType0
-        from ..models.structure_code_type_1 import StructureCodeType1
 
         code: dict[str, Any]
         if isinstance(self.code, StructureCodeType0):
-            code = self.code.to_dict()
-        elif isinstance(self.code, StructureCodeType1):
             code = self.code.to_dict()
         else:
             code = self.code.to_dict()
@@ -114,11 +110,10 @@ class CreateStructureResponseContent:
         from ..models.env_var import EnvVar
         from ..models.structure_code_type_0 import StructureCodeType0
         from ..models.structure_code_type_1 import StructureCodeType1
-        from ..models.structure_code_type_2 import StructureCodeType2
 
         d = dict(src_dict)
 
-        def _parse_code(data: object) -> Union["StructureCodeType0", "StructureCodeType1", "StructureCodeType2"]:
+        def _parse_code(data: object) -> Union["StructureCodeType0", "StructureCodeType1"]:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
@@ -127,19 +122,11 @@ class CreateStructureResponseContent:
                 return componentsschemas_structure_code_type_0
             except:  # noqa: E722
                 pass
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                componentsschemas_structure_code_type_1 = StructureCodeType1.from_dict(data)
-
-                return componentsschemas_structure_code_type_1
-            except:  # noqa: E722
-                pass
             if not isinstance(data, dict):
                 raise TypeError()
-            componentsschemas_structure_code_type_2 = StructureCodeType2.from_dict(data)
+            componentsschemas_structure_code_type_1 = StructureCodeType1.from_dict(data)
 
-            return componentsschemas_structure_code_type_2
+            return componentsschemas_structure_code_type_1
 
         code = _parse_code(d.pop("code"))
 

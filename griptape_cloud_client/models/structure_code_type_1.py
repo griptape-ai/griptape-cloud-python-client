@@ -5,7 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.data_lake_structure_code import DataLakeStructureCode
+    from ..models.default_structure_code import DefaultStructureCode
 
 
 T = TypeVar("T", bound="StructureCodeType1")
@@ -15,20 +15,20 @@ T = TypeVar("T", bound="StructureCodeType1")
 class StructureCodeType1:
     """
     Attributes:
-        data_lake (DataLakeStructureCode):
+        default (DefaultStructureCode):
     """
 
-    data_lake: "DataLakeStructureCode"
+    default: "DefaultStructureCode"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        data_lake = self.data_lake.to_dict()
+        default = self.default.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "data_lake": data_lake,
+                "default": default,
             }
         )
 
@@ -36,13 +36,13 @@ class StructureCodeType1:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.data_lake_structure_code import DataLakeStructureCode
+        from ..models.default_structure_code import DefaultStructureCode
 
         d = dict(src_dict)
-        data_lake = DataLakeStructureCode.from_dict(d.pop("data_lake"))
+        default = DefaultStructureCode.from_dict(d.pop("default"))
 
         structure_code_type_1 = cls(
-            data_lake=data_lake,
+            default=default,
         )
 
         structure_code_type_1.additional_properties = d

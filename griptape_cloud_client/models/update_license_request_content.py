@@ -19,12 +19,14 @@ class UpdateLicenseRequestContent:
     """
     Attributes:
         entitlement_policy_ids (Union[Unset, list[str]]):
+        managed_policy_ids (Union[Unset, list[str]]):
         metadata (Union[Unset, Metadata]):
         name (Union[Unset, str]):
         status (Union[Unset, LicenseStatus]):
     """
 
     entitlement_policy_ids: Union[Unset, list[str]] = UNSET
+    managed_policy_ids: Union[Unset, list[str]] = UNSET
     metadata: Union[Unset, "Metadata"] = UNSET
     name: Union[Unset, str] = UNSET
     status: Union[Unset, LicenseStatus] = UNSET
@@ -34,6 +36,10 @@ class UpdateLicenseRequestContent:
         entitlement_policy_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.entitlement_policy_ids, Unset):
             entitlement_policy_ids = self.entitlement_policy_ids
+
+        managed_policy_ids: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.managed_policy_ids, Unset):
+            managed_policy_ids = self.managed_policy_ids
 
         metadata: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.metadata, Unset):
@@ -50,6 +56,8 @@ class UpdateLicenseRequestContent:
         field_dict.update({})
         if entitlement_policy_ids is not UNSET:
             field_dict["entitlement_policy_ids"] = entitlement_policy_ids
+        if managed_policy_ids is not UNSET:
+            field_dict["managed_policy_ids"] = managed_policy_ids
         if metadata is not UNSET:
             field_dict["metadata"] = metadata
         if name is not UNSET:
@@ -65,6 +73,8 @@ class UpdateLicenseRequestContent:
 
         d = dict(src_dict)
         entitlement_policy_ids = cast(list[str], d.pop("entitlement_policy_ids", UNSET))
+
+        managed_policy_ids = cast(list[str], d.pop("managed_policy_ids", UNSET))
 
         _metadata = d.pop("metadata", UNSET)
         metadata: Union[Unset, Metadata]
@@ -84,6 +94,7 @@ class UpdateLicenseRequestContent:
 
         update_license_request_content = cls(
             entitlement_policy_ids=entitlement_policy_ids,
+            managed_policy_ids=managed_policy_ids,
             metadata=metadata,
             name=name,
             status=status,

@@ -5,7 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.github_structure_code import GithubStructureCode
+    from ..models.data_lake_structure_code import DataLakeStructureCode
 
 
 T = TypeVar("T", bound="StructureCodeType0")
@@ -15,20 +15,20 @@ T = TypeVar("T", bound="StructureCodeType0")
 class StructureCodeType0:
     """
     Attributes:
-        github (GithubStructureCode):
+        data_lake (DataLakeStructureCode):
     """
 
-    github: "GithubStructureCode"
+    data_lake: "DataLakeStructureCode"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        github = self.github.to_dict()
+        data_lake = self.data_lake.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "github": github,
+                "data_lake": data_lake,
             }
         )
 
@@ -36,13 +36,13 @@ class StructureCodeType0:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.github_structure_code import GithubStructureCode
+        from ..models.data_lake_structure_code import DataLakeStructureCode
 
         d = dict(src_dict)
-        github = GithubStructureCode.from_dict(d.pop("github"))
+        data_lake = DataLakeStructureCode.from_dict(d.pop("data_lake"))
 
         structure_code_type_0 = cls(
-            github=github,
+            data_lake=data_lake,
         )
 
         structure_code_type_0.additional_properties = d

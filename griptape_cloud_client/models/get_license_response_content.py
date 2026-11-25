@@ -31,8 +31,10 @@ class GetLicenseResponseContent:
         token_version (float):
         updated_at (datetime.datetime):
         effective_entitlement_policy_ids (Union[Unset, list[str]]):
+        effective_managed_policy_ids (Union[Unset, list[str]]):
         entitlement_policy_ids (Union[Unset, list[str]]):
         license_group_ids (Union[Unset, list[str]]):
+        managed_policy_ids (Union[Unset, list[str]]):
         metadata (Union[Unset, Metadata]):
         user_id (Union[Unset, str]):
     """
@@ -47,8 +49,10 @@ class GetLicenseResponseContent:
     token_version: float
     updated_at: datetime.datetime
     effective_entitlement_policy_ids: Union[Unset, list[str]] = UNSET
+    effective_managed_policy_ids: Union[Unset, list[str]] = UNSET
     entitlement_policy_ids: Union[Unset, list[str]] = UNSET
     license_group_ids: Union[Unset, list[str]] = UNSET
+    managed_policy_ids: Union[Unset, list[str]] = UNSET
     metadata: Union[Unset, "Metadata"] = UNSET
     user_id: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -76,6 +80,10 @@ class GetLicenseResponseContent:
         if not isinstance(self.effective_entitlement_policy_ids, Unset):
             effective_entitlement_policy_ids = self.effective_entitlement_policy_ids
 
+        effective_managed_policy_ids: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.effective_managed_policy_ids, Unset):
+            effective_managed_policy_ids = self.effective_managed_policy_ids
+
         entitlement_policy_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.entitlement_policy_ids, Unset):
             entitlement_policy_ids = self.entitlement_policy_ids
@@ -83,6 +91,10 @@ class GetLicenseResponseContent:
         license_group_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.license_group_ids, Unset):
             license_group_ids = self.license_group_ids
+
+        managed_policy_ids: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.managed_policy_ids, Unset):
+            managed_policy_ids = self.managed_policy_ids
 
         metadata: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.metadata, Unset):
@@ -107,10 +119,14 @@ class GetLicenseResponseContent:
         )
         if effective_entitlement_policy_ids is not UNSET:
             field_dict["effective_entitlement_policy_ids"] = effective_entitlement_policy_ids
+        if effective_managed_policy_ids is not UNSET:
+            field_dict["effective_managed_policy_ids"] = effective_managed_policy_ids
         if entitlement_policy_ids is not UNSET:
             field_dict["entitlement_policy_ids"] = entitlement_policy_ids
         if license_group_ids is not UNSET:
             field_dict["license_group_ids"] = license_group_ids
+        if managed_policy_ids is not UNSET:
+            field_dict["managed_policy_ids"] = managed_policy_ids
         if metadata is not UNSET:
             field_dict["metadata"] = metadata
         if user_id is not UNSET:
@@ -143,9 +159,13 @@ class GetLicenseResponseContent:
 
         effective_entitlement_policy_ids = cast(list[str], d.pop("effective_entitlement_policy_ids", UNSET))
 
+        effective_managed_policy_ids = cast(list[str], d.pop("effective_managed_policy_ids", UNSET))
+
         entitlement_policy_ids = cast(list[str], d.pop("entitlement_policy_ids", UNSET))
 
         license_group_ids = cast(list[str], d.pop("license_group_ids", UNSET))
+
+        managed_policy_ids = cast(list[str], d.pop("managed_policy_ids", UNSET))
 
         _metadata = d.pop("metadata", UNSET)
         metadata: Union[Unset, Metadata]
@@ -167,8 +187,10 @@ class GetLicenseResponseContent:
             token_version=token_version,
             updated_at=updated_at,
             effective_entitlement_policy_ids=effective_entitlement_policy_ids,
+            effective_managed_policy_ids=effective_managed_policy_ids,
             entitlement_policy_ids=entitlement_policy_ids,
             license_group_ids=license_group_ids,
+            managed_policy_ids=managed_policy_ids,
             metadata=metadata,
             user_id=user_id,
         )

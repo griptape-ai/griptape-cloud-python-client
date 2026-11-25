@@ -12,17 +12,21 @@ class GetCreditBalanceResponseContent:
     """
     Attributes:
         balance (float):
+        balance_enforced (bool):
         notional_value (str):
         organization_id (str):
     """
 
     balance: float
+    balance_enforced: bool
     notional_value: str
     organization_id: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         balance = self.balance
+
+        balance_enforced = self.balance_enforced
 
         notional_value = self.notional_value
 
@@ -33,6 +37,7 @@ class GetCreditBalanceResponseContent:
         field_dict.update(
             {
                 "balance": balance,
+                "balance_enforced": balance_enforced,
                 "notional_value": notional_value,
                 "organization_id": organization_id,
             }
@@ -45,12 +50,15 @@ class GetCreditBalanceResponseContent:
         d = dict(src_dict)
         balance = d.pop("balance")
 
+        balance_enforced = d.pop("balance_enforced")
+
         notional_value = d.pop("notional_value")
 
         organization_id = d.pop("organization_id")
 
         get_credit_balance_response_content = cls(
             balance=balance,
+            balance_enforced=balance_enforced,
             notional_value=notional_value,
             organization_id=organization_id,
         )
