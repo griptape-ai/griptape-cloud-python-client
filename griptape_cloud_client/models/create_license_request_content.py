@@ -24,6 +24,7 @@ class CreateLicenseRequestContent:
         license_type (LicenseType):
         name (str):
         entitlement_policy_ids (Union[Unset, list[str]]):
+        managed_policy_ids (Union[Unset, list[str]]):
         metadata (Union[Unset, Metadata]):
         user_id (Union[Unset, str]):
     """
@@ -32,6 +33,7 @@ class CreateLicenseRequestContent:
     license_type: LicenseType
     name: str
     entitlement_policy_ids: Union[Unset, list[str]] = UNSET
+    managed_policy_ids: Union[Unset, list[str]] = UNSET
     metadata: Union[Unset, "Metadata"] = UNSET
     user_id: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -46,6 +48,10 @@ class CreateLicenseRequestContent:
         entitlement_policy_ids: Union[Unset, list[str]] = UNSET
         if not isinstance(self.entitlement_policy_ids, Unset):
             entitlement_policy_ids = self.entitlement_policy_ids
+
+        managed_policy_ids: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.managed_policy_ids, Unset):
+            managed_policy_ids = self.managed_policy_ids
 
         metadata: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.metadata, Unset):
@@ -64,6 +70,8 @@ class CreateLicenseRequestContent:
         )
         if entitlement_policy_ids is not UNSET:
             field_dict["entitlement_policy_ids"] = entitlement_policy_ids
+        if managed_policy_ids is not UNSET:
+            field_dict["managed_policy_ids"] = managed_policy_ids
         if metadata is not UNSET:
             field_dict["metadata"] = metadata
         if user_id is not UNSET:
@@ -84,6 +92,8 @@ class CreateLicenseRequestContent:
 
         entitlement_policy_ids = cast(list[str], d.pop("entitlement_policy_ids", UNSET))
 
+        managed_policy_ids = cast(list[str], d.pop("managed_policy_ids", UNSET))
+
         _metadata = d.pop("metadata", UNSET)
         metadata: Union[Unset, Metadata]
         if isinstance(_metadata, Unset):
@@ -98,6 +108,7 @@ class CreateLicenseRequestContent:
             license_type=license_type,
             name=name,
             entitlement_policy_ids=entitlement_policy_ids,
+            managed_policy_ids=managed_policy_ids,
             metadata=metadata,
             user_id=user_id,
         )

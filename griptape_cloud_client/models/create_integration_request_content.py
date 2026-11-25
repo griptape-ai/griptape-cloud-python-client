@@ -10,7 +10,6 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.integration_config_input_union_type_0 import IntegrationConfigInputUnionType0
     from ..models.integration_config_input_union_type_1 import IntegrationConfigInputUnionType1
-    from ..models.integration_config_input_union_type_2 import IntegrationConfigInputUnionType2
 
 
 T = TypeVar("T", bound="CreateIntegrationRequestContent")
@@ -20,33 +19,25 @@ T = TypeVar("T", bound="CreateIntegrationRequestContent")
 class CreateIntegrationRequestContent:
     """
     Attributes:
-        config (Union['IntegrationConfigInputUnionType0', 'IntegrationConfigInputUnionType1',
-            'IntegrationConfigInputUnionType2']):
+        config (Union['IntegrationConfigInputUnionType0', 'IntegrationConfigInputUnionType1']):
         name (str):
         type_ (IntegrationType):
-        assistant_ids (Union[Unset, list[str]]):
         description (Union[Unset, str]):
         structure_ids (Union[Unset, list[str]]):
     """
 
-    config: Union[
-        "IntegrationConfigInputUnionType0", "IntegrationConfigInputUnionType1", "IntegrationConfigInputUnionType2"
-    ]
+    config: Union["IntegrationConfigInputUnionType0", "IntegrationConfigInputUnionType1"]
     name: str
     type_: IntegrationType
-    assistant_ids: Union[Unset, list[str]] = UNSET
     description: Union[Unset, str] = UNSET
     structure_ids: Union[Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.integration_config_input_union_type_0 import IntegrationConfigInputUnionType0
-        from ..models.integration_config_input_union_type_1 import IntegrationConfigInputUnionType1
 
         config: dict[str, Any]
         if isinstance(self.config, IntegrationConfigInputUnionType0):
-            config = self.config.to_dict()
-        elif isinstance(self.config, IntegrationConfigInputUnionType1):
             config = self.config.to_dict()
         else:
             config = self.config.to_dict()
@@ -54,10 +45,6 @@ class CreateIntegrationRequestContent:
         name = self.name
 
         type_ = self.type_.value
-
-        assistant_ids: Union[Unset, list[str]] = UNSET
-        if not isinstance(self.assistant_ids, Unset):
-            assistant_ids = self.assistant_ids
 
         description = self.description
 
@@ -74,8 +61,6 @@ class CreateIntegrationRequestContent:
                 "type": type_,
             }
         )
-        if assistant_ids is not UNSET:
-            field_dict["assistant_ids"] = assistant_ids
         if description is not UNSET:
             field_dict["description"] = description
         if structure_ids is not UNSET:
@@ -87,15 +72,12 @@ class CreateIntegrationRequestContent:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.integration_config_input_union_type_0 import IntegrationConfigInputUnionType0
         from ..models.integration_config_input_union_type_1 import IntegrationConfigInputUnionType1
-        from ..models.integration_config_input_union_type_2 import IntegrationConfigInputUnionType2
 
         d = dict(src_dict)
 
         def _parse_config(
             data: object,
-        ) -> Union[
-            "IntegrationConfigInputUnionType0", "IntegrationConfigInputUnionType1", "IntegrationConfigInputUnionType2"
-        ]:
+        ) -> Union["IntegrationConfigInputUnionType0", "IntegrationConfigInputUnionType1"]:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
@@ -106,29 +88,17 @@ class CreateIntegrationRequestContent:
                 return componentsschemas_integration_config_input_union_type_0
             except:  # noqa: E722
                 pass
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                componentsschemas_integration_config_input_union_type_1 = IntegrationConfigInputUnionType1.from_dict(
-                    data
-                )
-
-                return componentsschemas_integration_config_input_union_type_1
-            except:  # noqa: E722
-                pass
             if not isinstance(data, dict):
                 raise TypeError()
-            componentsschemas_integration_config_input_union_type_2 = IntegrationConfigInputUnionType2.from_dict(data)
+            componentsschemas_integration_config_input_union_type_1 = IntegrationConfigInputUnionType1.from_dict(data)
 
-            return componentsschemas_integration_config_input_union_type_2
+            return componentsschemas_integration_config_input_union_type_1
 
         config = _parse_config(d.pop("config"))
 
         name = d.pop("name")
 
         type_ = IntegrationType(d.pop("type"))
-
-        assistant_ids = cast(list[str], d.pop("assistant_ids", UNSET))
 
         description = d.pop("description", UNSET)
 
@@ -138,7 +108,6 @@ class CreateIntegrationRequestContent:
             config=config,
             name=name,
             type_=type_,
-            assistant_ids=assistant_ids,
             description=description,
             structure_ids=structure_ids,
         )

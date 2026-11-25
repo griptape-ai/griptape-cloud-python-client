@@ -2,12 +2,10 @@ from enum import Enum
 
 
 class Entitlement(str, Enum):
+    ENTERPRISE = "ENTERPRISE"
     EXPIRED = "EXPIRED"
     FREE = "FREE"
-    PAID = "PAID"
-    PARTNER = "PARTNER"
     PROFESSIONAL = "PROFESSIONAL"
-    STUDIO = "STUDIO"
     UNPAID = "UNPAID"
 
     def __str__(self) -> str:

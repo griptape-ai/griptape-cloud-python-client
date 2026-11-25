@@ -10,7 +10,6 @@ if TYPE_CHECKING:
     from ..models.env_var import EnvVar
     from ..models.structure_code_type_0 import StructureCodeType0
     from ..models.structure_code_type_1 import StructureCodeType1
-    from ..models.structure_code_type_2 import StructureCodeType2
 
 
 T = TypeVar("T", bound="UpdateStructureRequestContent")
@@ -20,7 +19,7 @@ T = TypeVar("T", bound="UpdateStructureRequestContent")
 class UpdateStructureRequestContent:
     """
     Attributes:
-        code (Union['StructureCodeType0', 'StructureCodeType1', 'StructureCodeType2', Unset]):
+        code (Union['StructureCodeType0', 'StructureCodeType1', Unset]):
         description (Union[Unset, str]):
         env_vars (Union[Unset, list['EnvVar']]):
         name (Union[Unset, str]):
@@ -28,7 +27,7 @@ class UpdateStructureRequestContent:
         webhook_enabled (Union[Unset, bool]):
     """
 
-    code: Union["StructureCodeType0", "StructureCodeType1", "StructureCodeType2", Unset] = UNSET
+    code: Union["StructureCodeType0", "StructureCodeType1", Unset] = UNSET
     description: Union[Unset, str] = UNSET
     env_vars: Union[Unset, list["EnvVar"]] = UNSET
     name: Union[Unset, str] = UNSET
@@ -38,14 +37,11 @@ class UpdateStructureRequestContent:
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.structure_code_type_0 import StructureCodeType0
-        from ..models.structure_code_type_1 import StructureCodeType1
 
         code: Union[Unset, dict[str, Any]]
         if isinstance(self.code, Unset):
             code = UNSET
         elif isinstance(self.code, StructureCodeType0):
-            code = self.code.to_dict()
-        elif isinstance(self.code, StructureCodeType1):
             code = self.code.to_dict()
         else:
             code = self.code.to_dict()
@@ -88,11 +84,10 @@ class UpdateStructureRequestContent:
         from ..models.env_var import EnvVar
         from ..models.structure_code_type_0 import StructureCodeType0
         from ..models.structure_code_type_1 import StructureCodeType1
-        from ..models.structure_code_type_2 import StructureCodeType2
 
         d = dict(src_dict)
 
-        def _parse_code(data: object) -> Union["StructureCodeType0", "StructureCodeType1", "StructureCodeType2", Unset]:
+        def _parse_code(data: object) -> Union["StructureCodeType0", "StructureCodeType1", Unset]:
             if isinstance(data, Unset):
                 return data
             try:
@@ -103,19 +98,11 @@ class UpdateStructureRequestContent:
                 return componentsschemas_structure_code_type_0
             except:  # noqa: E722
                 pass
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                componentsschemas_structure_code_type_1 = StructureCodeType1.from_dict(data)
-
-                return componentsschemas_structure_code_type_1
-            except:  # noqa: E722
-                pass
             if not isinstance(data, dict):
                 raise TypeError()
-            componentsschemas_structure_code_type_2 = StructureCodeType2.from_dict(data)
+            componentsschemas_structure_code_type_1 = StructureCodeType1.from_dict(data)
 
-            return componentsschemas_structure_code_type_2
+            return componentsschemas_structure_code_type_1
 
         code = _parse_code(d.pop("code", UNSET))
 

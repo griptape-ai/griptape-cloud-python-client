@@ -11,9 +11,11 @@ T = TypeVar("T", bound="GithubCodeSource")
 
 @_attrs_define
 class GithubCodeSource:
-    """
-    Attributes:
-        commit_sha (Union[Unset, str]):
+    """The code source of a past deployment from GitHub. Deploying from GitHub is no
+    longer supported.
+
+        Attributes:
+            commit_sha (Union[Unset, str]):
     """
 
     commit_sha: Union[Unset, str] = UNSET

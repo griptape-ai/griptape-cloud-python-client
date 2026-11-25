@@ -27,10 +27,8 @@ class GetDeploymentResponseContent:
         deployment_id (str):
         status (DeploymentStatus):
         completed_at (Union[None, Unset, datetime.datetime]):
-        function_id (Union[Unset, str]):
         status_detail (Union[Unset, Any]):
         structure_id (Union[Unset, str]):
-        tool_id (Union[Unset, str]):
     """
 
     code_source: Union["CodeSourceType0", "CodeSourceType1"]
@@ -39,10 +37,8 @@ class GetDeploymentResponseContent:
     deployment_id: str
     status: DeploymentStatus
     completed_at: Union[None, Unset, datetime.datetime] = UNSET
-    function_id: Union[Unset, str] = UNSET
     status_detail: Union[Unset, Any] = UNSET
     structure_id: Union[Unset, str] = UNSET
-    tool_id: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -70,13 +66,9 @@ class GetDeploymentResponseContent:
         else:
             completed_at = self.completed_at
 
-        function_id = self.function_id
-
         status_detail = self.status_detail
 
         structure_id = self.structure_id
-
-        tool_id = self.tool_id
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -91,14 +83,10 @@ class GetDeploymentResponseContent:
         )
         if completed_at is not UNSET:
             field_dict["completed_at"] = completed_at
-        if function_id is not UNSET:
-            field_dict["function_id"] = function_id
         if status_detail is not UNSET:
             field_dict["status_detail"] = status_detail
         if structure_id is not UNSET:
             field_dict["structure_id"] = structure_id
-        if tool_id is not UNSET:
-            field_dict["tool_id"] = tool_id
 
         return field_dict
 
@@ -151,13 +139,9 @@ class GetDeploymentResponseContent:
 
         completed_at = _parse_completed_at(d.pop("completed_at", UNSET))
 
-        function_id = d.pop("function_id", UNSET)
-
         status_detail = d.pop("status_detail", UNSET)
 
         structure_id = d.pop("structure_id", UNSET)
-
-        tool_id = d.pop("tool_id", UNSET)
 
         get_deployment_response_content = cls(
             code_source=code_source,
@@ -166,10 +150,8 @@ class GetDeploymentResponseContent:
             deployment_id=deployment_id,
             status=status,
             completed_at=completed_at,
-            function_id=function_id,
             status_detail=status_detail,
             structure_id=structure_id,
-            tool_id=tool_id,
         )
 
         get_deployment_response_content.additional_properties = d

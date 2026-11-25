@@ -20,8 +20,14 @@ T = TypeVar("T", bound="UpdateOrganizationResponseContent")
 class UpdateOrganizationResponseContent:
     """
     Attributes:
+        can_audit_usage (bool): Whether the organization has usage auditing, decided by the server from its plan and the
+            subscription tier limits. The spend, spend export and tag docs refer to this field.
+        can_manage_budgets (bool): Whether the organization has model-credit budgets, decided by the server from its
+            plan and the subscription tier limits. The budget, budget alert and budget check docs refer to this field.
+        can_manage_permissions (bool): Whether the organization can manage permission policies
         created_at (datetime.datetime):
         created_by (str):
+        default (bool):  Default: False.
         default_bucket_id (str):
         description (str):
         entitlement (Entitlement):  Default: Entitlement.FREE.
@@ -31,6 +37,9 @@ class UpdateOrganizationResponseContent:
         model_config (Union[Unset, OrganizationModelConfig]):
     """
 
+    can_audit_usage: bool
+    can_manage_budgets: bool
+    can_manage_permissions: bool
     created_at: datetime.datetime
     created_by: str
     default_bucket_id: str
@@ -38,14 +47,23 @@ class UpdateOrganizationResponseContent:
     name: str
     organization_id: str
     updated_at: datetime.datetime
+    default: bool = False
     entitlement: Entitlement = Entitlement.FREE
     model_config: Union[Unset, "OrganizationModelConfig"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        can_audit_usage = self.can_audit_usage
+
+        can_manage_budgets = self.can_manage_budgets
+
+        can_manage_permissions = self.can_manage_permissions
+
         created_at = self.created_at.isoformat()
 
         created_by = self.created_by
+
+        default = self.default
 
         default_bucket_id = self.default_bucket_id
 
@@ -67,8 +85,12 @@ class UpdateOrganizationResponseContent:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "can_audit_usage": can_audit_usage,
+                "can_manage_budgets": can_manage_budgets,
+                "can_manage_permissions": can_manage_permissions,
                 "created_at": created_at,
                 "created_by": created_by,
+                "default": default,
                 "default_bucket_id": default_bucket_id,
                 "description": description,
                 "entitlement": entitlement,
@@ -87,9 +109,17 @@ class UpdateOrganizationResponseContent:
         from ..models.organization_model_config import OrganizationModelConfig
 
         d = dict(src_dict)
+        can_audit_usage = d.pop("can_audit_usage")
+
+        can_manage_budgets = d.pop("can_manage_budgets")
+
+        can_manage_permissions = d.pop("can_manage_permissions")
+
         created_at = isoparse(d.pop("created_at"))
 
         created_by = d.pop("created_by")
+
+        default = d.pop("default")
 
         default_bucket_id = d.pop("default_bucket_id")
 
@@ -111,8 +141,12 @@ class UpdateOrganizationResponseContent:
             model_config = OrganizationModelConfig.from_dict(_model_config)
 
         update_organization_response_content = cls(
+            can_audit_usage=can_audit_usage,
+            can_manage_budgets=can_manage_budgets,
+            can_manage_permissions=can_manage_permissions,
             created_at=created_at,
             created_by=created_by,
+            default=default,
             default_bucket_id=default_bucket_id,
             description=description,
             entitlement=entitlement,
